@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="711.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/8.0.111">
+    <center>
+        <TableView fx:id="contactsTable" prefHeight="584.0" prefWidth="954.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="firstNameCol" editable="false" prefWidth="136.0" text="Firstname"/>
+                <TableColumn fx:id="lastNameCol" editable="false" prefWidth="144.0" text="Lastname"/>
+                <TableColumn fx:id="phoneNumberCol" editable="false" prefWidth="195.0" text="Phone Number"/>
+                <TableColumn fx:id="addressCol" editable="false" prefWidth="217.0" text="Address"/>
+                <TableColumn fx:id="ageCol" editable="false" prefWidth="119.0" text="Age"/>
+                <TableColumn fx:id="dateOfBirthCol" editable="false" prefWidth="142.0" text="Date of Birth"/>
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem fx:id="addCMI" mnemonicParsing="false" onAction="#onAdd" text="Add Contact"/>
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TableView>
+    </center>
+    <top>
+        <AnchorPane prefHeight="50.0" prefWidth="954.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="settingsBtn" focusTraversable="false" layoutX="23.0" layoutY="13.0"
+                        onAction="#onSettings" prefHeight="25.0" prefWidth="68.0" text="_Settings">
+                    <tooltip>
+                        <Tooltip text="Configure various options regarding the application."/>
+                    </tooltip>
+                </Button>
+                <Button fx:id="aboutBtn" focusTraversable="false" layoutX="114.0" layoutY="13.0" onAction="#onAbout"
+                        prefHeight="25.0" prefWidth="68.0" text="_About">
+                    <tooltip>
+                        <Tooltip text="Show info about this application."/>
+                    </tooltip>
+                </Button>
+            </children>
+        </AnchorPane>
+    </top>
+    <bottom>
+        <AnchorPane prefHeight="83.0" prefWidth="954.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="editBtn" disable="true" focusTraversable="false" layoutX="246.0" layoutY="19.0"
+                        onAction="#onEdit" prefHeight="45.0" prefWidth="116.0" text="_Edit Contact">
+                    <tooltip>
+                        <Tooltip text="Edit a selected contacts info."/>
+                    </tooltip>
+                </Button>
+                <Button fx:id="addBtn" focusTraversable="false" layoutX="420.0" layoutY="19.0" onAction="#onAdd"
+                        prefHeight="45.0" prefWidth="114.0" text="_Add Contact">
+                    <tooltip>
+                        <Tooltip text="Add a new contact"/>
+                    </tooltip>
+                </Button>
+                <Button fx:id="removeBtn" disable="true" focusTraversable="false" layoutX="598.0" layoutY="19.0"
+                        onAction="#onRemove" prefHeight="45.0" prefWidth="117.0" text="_Remove Contact">
+                    <tooltip>
+                        <Tooltip text="Remove the selected contact."/>
+                    </tooltip>
+                </Button>
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>
