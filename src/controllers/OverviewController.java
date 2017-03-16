@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -17,6 +14,7 @@ import models.Manager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -67,7 +65,7 @@ public class OverviewController implements Initializable {
     @FXML
     void onAdd(ActionEvent event) {
         Stage addDialog = new Stage();
-        AddContactController addContactController = new AddContactController(mainStage, manager);
+        AddContactController addContactController = new AddContactController(manager);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddContact.fxml"));
         loader.setController(addContactController);
         try {
@@ -88,7 +86,16 @@ public class OverviewController implements Initializable {
 
     @FXML
     void onRemove(ActionEvent event) {
-        manager.removeContact(contactsTable.getSelectionModel().getSelectedIndex());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure you want to remove %s?", contactsTable.getSelectionModel().getSelectedItem().getFullName()), ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Are you sure?");
+        alert.setHeaderText(null);
+        alert.initModality(Modality.WINDOW_MODAL);
+        alert.initOwner(mainStage);
+        Optional<ButtonType> choice = alert.showAndWait();
+        if (choice.get() == ButtonType.YES) {
+            manager.removeContact(contactsTable.getSelectionModel().getSelectedIndex());
+        }
     }
 
     @FXML
@@ -99,22 +106,22 @@ public class OverviewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstname"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("lastname"));
-        phoneNumberCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("phonenumber"));
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstName"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("lastName"));
+        phoneNumberCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("phoneNumber"));
         addressCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("address"));
         ageCol.setCellValueFactory(new PropertyValueFactory<Contact, Integer>("age"));
-        dateOfBirthCol.setCellValueFactory(new PropertyValueFactory<Contact, Object>("dateofbirth"));
+        dateOfBirthCol.setCellValueFactory(new PropertyValueFactory<Contact, Object>("dateOfBirth"));
         contactsTable.setItems(manager.getContacts());
+        createListeners();
     }
 
     private void createListeners() {
-        contactsTable.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+        contactsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (contactsTable.getSelectionModel().getSelectedItem() != null) {
                 editBtn.setDisable(false);
-                removeBtn.setDisable(true);
-            }
-            else {
+                removeBtn.setDisable(false);
+            } else {
                 editBtn.setDisable(true);
                 removeBtn.setDisable(true);
             }

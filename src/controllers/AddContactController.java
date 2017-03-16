@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
 import models.Contact;
 import models.Manager;
 
@@ -20,7 +19,6 @@ import java.util.ResourceBundle;
  */
 public class AddContactController implements Initializable {
 
-    private Stage mainStage;
     private Manager manager;
 
     @FXML
@@ -38,28 +36,36 @@ public class AddContactController implements Initializable {
     @FXML
     private DatePicker dateOfBirthPicker;
 
+    public AddContactController(Manager manager) {
+        this.manager = manager;
+    }
+
     @FXML
     void onAdd(ActionEvent event) {
 
         StringBuilder warnings = new StringBuilder();
 
-        if (!phoneNumberField.getText().isEmpty() && !phoneNumberField.getText().matches("\\d{3}[-.\\s]\\d{3}[-.\\s]\\d{4}")) {
-            warnings.append("Phone number must be in the proper format and only contain numbers.\n");
-            phoneNumberField.clear();
-        }
         if (firstNameField.getText().isEmpty() && lastNameField.getText().isEmpty()) {
             warnings.append("A firstname or lastname must be given.\n");
         } else {
-            if (!firstNameField.getText().isEmpty()) {
-                if (!firstNameField.getText().matches("/^[a-zA-Z]+$/")) ;
+            if (!firstNameField.getText().isEmpty() && !lastNameField.getText().isEmpty() && firstNameField.getText().equals(lastNameField.getText())) {
+                warnings.append("Firstname and lastname cannot be identical.\n");
+                firstNameField.clear();
+                lastNameField.clear();
+            }
+            if (!firstNameField.getText().isEmpty() && !firstNameField.getText().matches("[a-zA-Z]*")) {
                 warnings.append("Firstname can only contain letters.\n");
                 firstNameField.clear();
             }
-            if (!lastNameField.getText().isEmpty()) {
-                if (!lastNameField.getText().matches("/^[a-zA-Z]+$/")) ;
+            if (!lastNameField.getText().isEmpty() && !lastNameField.getText().matches("[a-zA-Z]*")) {
                 warnings.append("Lastname can only contain letters.\n");
                 lastNameField.clear();
             }
+        }
+
+        if (!phoneNumberField.getText().isEmpty() && !phoneNumberField.getText().matches("\\d{3}[-.\\s]\\d{3}[-.\\s]\\d{4}")) {
+            warnings.append("Phone number must be in ###-###-#### format and only contain numbers and dashes.\n");
+            phoneNumberField.clear();
         }
         if (warnings.length() != 0) {
             Alert alert = new Alert(Alert.AlertType.WARNING, warnings.toString());
@@ -77,11 +83,6 @@ public class AddContactController implements Initializable {
     @FXML
     void onCancel(ActionEvent event) {
         cancelBtn.getScene().getWindow().hide();
-    }
-
-    public AddContactController(Stage mainStage, Manager manager) {
-        this.mainStage = mainStage;
-        this.manager = manager;
     }
 
     @Override

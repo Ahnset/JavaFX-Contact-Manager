@@ -79,6 +79,6 @@ public class Contact {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        return firstName.get() + " " + lastName.get();
     }
 }
