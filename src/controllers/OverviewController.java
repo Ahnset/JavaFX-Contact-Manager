@@ -70,8 +70,8 @@ public class OverviewController implements Initializable {
         loader.setController(addContactController);
         try {
             addDialog.setScene(new Scene(loader.load()));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
         addDialog.setTitle("Add contact");
         addDialog.initOwner(mainStage);
@@ -81,13 +81,25 @@ public class OverviewController implements Initializable {
 
     @FXML
     void onEdit(ActionEvent event) {
-
+        Stage editDialog = new Stage();
+        EditContactController editContactController = new EditContactController(contactsTable.getSelectionModel().getSelectedItem());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditContact.fxml"));
+        loader.setController(editContactController);
+        try {
+            editDialog.setScene(new Scene(loader.load()));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        editDialog.setTitle("Edit contact");
+        editDialog.initOwner(mainStage);
+        editDialog.initModality(Modality.WINDOW_MODAL);
+        editDialog.showAndWait();
     }
 
     @FXML
     void onRemove(ActionEvent event) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure you want to remove %s?", contactsTable.getSelectionModel().getSelectedItem().getFullName()), ButtonType.YES, ButtonType.NO);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, String.format("Are you sure you want to remove %s?",
+                contactsTable.getSelectionModel().getSelectedItem().getFullName()), ButtonType.YES, ButtonType.NO);
         alert.setTitle("Are you sure?");
         alert.setHeaderText(null);
         alert.initModality(Modality.WINDOW_MODAL);
@@ -100,8 +112,6 @@ public class OverviewController implements Initializable {
 
     @FXML
     void onSettings(ActionEvent event) {
-
-
     }
 
     @Override

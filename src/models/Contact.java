@@ -1,5 +1,6 @@
 package models;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.time.LocalDate;
@@ -12,14 +13,14 @@ public class Contact {
     private SimpleStringProperty firstName, lastName;
     private SimpleStringProperty phoneNumber;
     private SimpleStringProperty address;
-    private LocalDate dateOfBirth;
+    private SimpleObjectProperty<LocalDate> dateOfBirth;
 
     public Contact(String firstName, String lastName, String phoneNumber, String address, LocalDate dateOfBirth) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
         this.address = new SimpleStringProperty(address);
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new SimpleObjectProperty<>(dateOfBirth);
     }
 
     public String getFirstName() {
@@ -71,11 +72,15 @@ public class Contact {
     }
 
     public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+        return dateOfBirth.get();
     }
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth.set(dateOfBirth);
+    }
+
+    public SimpleObjectProperty<LocalDate> dateOfBirthProperty() {
+        return dateOfBirth;
     }
 
     public String getFullName() {
