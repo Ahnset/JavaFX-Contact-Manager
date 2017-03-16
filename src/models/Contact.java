@@ -2,7 +2,7 @@ package models;
 
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Created by Jared on 3/15/2017.
@@ -12,9 +12,9 @@ public class Contact {
     private SimpleStringProperty firstName, lastName;
     private SimpleStringProperty phoneNumber;
     private SimpleStringProperty address;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
-    public Contact(String firstName, String lastName, String phoneNumber, String address, Date dateOfBirth) {
+    public Contact(String firstName, String lastName, String phoneNumber, String address, LocalDate dateOfBirth) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
@@ -70,11 +70,11 @@ public class Contact {
         return address;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
