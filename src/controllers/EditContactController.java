@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import models.Contact;
+import models.Manager;
 import services.Validator;
 import util.DialogFactory;
 import util.Formatter;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
  */
 public class EditContactController implements Initializable {
 
+    private Manager manager;
     private Contact contact;
 
     @FXML
@@ -37,7 +39,8 @@ public class EditContactController implements Initializable {
     @FXML
     private DatePicker dateOfBirthPicker;
 
-    public EditContactController(Contact contact) {
+    public EditContactController(Manager manager, Contact contact) {
+        this.manager = manager;
         this.contact = contact;
     }
 
@@ -69,6 +72,9 @@ public class EditContactController implements Initializable {
         }
         if (warnings.length() != 0) {
             DialogFactory.createDialog("Warning!", saveBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
+        } else if (manager.contactExists(contact)) {
+            DialogFactory.createDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
+                    String.format("A contact with the name %s already exists.", contact.getFullName()), Alert.AlertType.WARNING);
         } else {
             contact.setFirstName(Formatter.formatName(firstNameField.getText()));
             contact.setLastName(Formatter.formatName(lastNameField.getText()));

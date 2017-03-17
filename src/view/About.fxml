@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="526.0" prefWidth="504.0" xmlns="http://javafx.com/javafx/8.0.111">
+    <center>
+        <TextArea editable="false" prefHeight="409.0" prefWidth="517.0"
+                  text="&#10;&#10;        &#10;&#10;                       &#10;                           A contact manager application written in JavaFX. &#10;&#10;                                          Created by Jared Lung&#10;&#10;                                                  Version N/A"
+                  BorderPane.alignment="CENTER">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </TextArea>
+    </center>
+    <bottom>
+        <AnchorPane prefHeight="117.0" prefWidth="616.0" BorderPane.alignment="CENTER">
+            <children>
+                <Hyperlink fx:id="ghLink" layoutX="159.0" layoutY="40.0" onAction="#onGhLink" prefHeight="37.0"
+                           prefWidth="233.0" text="Github page for this application" textAlignment="CENTER">
+                    <font>
+                        <Font size="13.0"/>
+                    </font>
+                </Hyperlink>
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

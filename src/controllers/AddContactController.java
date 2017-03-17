@@ -2,7 +2,6 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -13,13 +12,10 @@ import services.Validator;
 import util.DialogFactory;
 import util.Formatter;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 /**
  * Created by Jared on 3/15/2017.
  */
-public class AddContactController implements Initializable {
+public class AddContactController {
 
     private Manager manager;
 
@@ -87,11 +83,5 @@ public class AddContactController implements Initializable {
     @FXML
     void onCancel(ActionEvent event) {
         cancelBtn.getScene().getWindow().hide();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-
     }
 }

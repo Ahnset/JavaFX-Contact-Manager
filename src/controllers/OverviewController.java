@@ -59,7 +59,20 @@ public class OverviewController implements Initializable {
 
     @FXML
     void onAbout(ActionEvent event) {
-
+        Stage aboutDialog = new Stage();
+        AboutController aboutController = new AboutController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/About.fxml"));
+        loader.setController(aboutController);
+        try {
+            aboutDialog.setScene(new Scene(loader.load()));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        aboutDialog.setTitle("Application Info");
+        aboutDialog.initOwner(mainStage);
+        aboutDialog.initModality(Modality.WINDOW_MODAL);
+        aboutDialog.setResizable(false);
+        aboutDialog.showAndWait();
     }
 
     @FXML
@@ -82,7 +95,7 @@ public class OverviewController implements Initializable {
     @FXML
     void onEdit(ActionEvent event) {
         Stage editDialog = new Stage();
-        EditContactController editContactController = new EditContactController(contactsTable.getSelectionModel().getSelectedItem());
+        EditContactController editContactController = new EditContactController(manager, contactsTable.getSelectionModel().getSelectedItem());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditContact.fxml"));
         loader.setController(editContactController);
         try {
