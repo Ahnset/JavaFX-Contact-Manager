@@ -18,6 +18,7 @@ public class Launcher extends Application {
         loader.setController(overviewController);
         mainStage.setScene(new Scene(loader.load()));
         mainStage.setTitle(String.format("%s's contacts", System.getProperty("user.name")));
+        mainStage.setResizable(false);
         mainStage.show();
     }
 }

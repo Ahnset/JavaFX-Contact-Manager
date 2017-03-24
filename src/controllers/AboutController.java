@@ -2,7 +2,7 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Button;
 
 import java.awt.*;
 import java.io.IOException;
@@ -15,10 +15,12 @@ import java.net.URL;
 public class AboutController {
 
     @FXML
-    private Hyperlink ghLink;
+    private Button visitBtn;
+    @FXML
+    private Button closeBtn;
 
     @FXML
-    void onGhLink(ActionEvent event) {
+    void onVisit(ActionEvent event) {
         try {
             Desktop.getDesktop().browse(new URL("https://github.com/MaliceGFS/Advanced-Contact-Manager").toURI());
         } catch (IOException ex) {
@@ -26,5 +28,10 @@ public class AboutController {
         } catch (URISyntaxException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    void onClose(ActionEvent event) {
+        closeBtn.getScene().getWindow().hide();
     }
 }
