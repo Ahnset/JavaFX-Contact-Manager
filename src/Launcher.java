@@ -6,7 +6,9 @@ import javafx.stage.Stage;
 import models.Manager;
 
 /**
- * Created by Jared on 3/15/2017.
+ * Handle the initialization and launch of the application.
+ *
+ * @author Jared
  */
 public class Launcher extends Application {
 
