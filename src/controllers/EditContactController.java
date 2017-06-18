@@ -57,16 +57,16 @@ public class EditContactController implements Initializable {
                 firstNameField.clear();
                 lastNameField.clear();
             }
-            if (!firstNameField.getText().isEmpty() && !Validator.nameIsValid(firstNameField.getText())) {
+            if (!firstNameField.getText().isEmpty() && !Validator.isValidName(firstNameField.getText())) {
                 warnings.append("Firstname can only contain letters.\n");
                 firstNameField.clear();
             }
-            if (!lastNameField.getText().isEmpty() && !Validator.nameIsValid(lastNameField.getText())) {
+            if (!lastNameField.getText().isEmpty() && !Validator.isValidName(lastNameField.getText())) {
                 warnings.append("Lastname can only contain letters.\n");
                 lastNameField.clear();
             }
         }
-        if (!phoneNumberField.getText().isEmpty() && !Validator.phoneNumberIsValid(phoneNumberField.getText())) {
+        if (!phoneNumberField.getText().isEmpty() && !Validator.isValidPhoneNumber(phoneNumberField.getText())) {
             warnings.append("Phone number must be in ###-###-#### format and have no white space anywhere.\n");
             phoneNumberField.clear();
         }

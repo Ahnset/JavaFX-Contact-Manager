@@ -124,8 +124,7 @@ public class OverviewController implements Initializable {
     }
 
     @FXML
-    void onSettings(ActionEvent event) {
-    }
+    void onSettings(ActionEvent event) {}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

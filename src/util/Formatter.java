@@ -1,7 +1,7 @@
 package util;
 
 /**
- * A collection of various static methods that perform formatting on various types of data such as first and last names.
+ * A collection of various static methods that perform formatting on various types of data such as the names of people.
  *
  * @author Jared
  */

@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import models.Manager;
 
 /**
- * Handle the initialization and launch of the application.
+ * Handles the initialization and launch of the application.
  *
  * @author Jared
  */

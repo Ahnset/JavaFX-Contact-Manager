@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import java.time.LocalDate;
 
 /**
- * An object representing a contact with basic info such as name and phone number and methods to interact with this data.
+ * An object representing a contact with basic info such as a name and a phone number and methods to interact with this data.
  *
  * @author Jared
  */
