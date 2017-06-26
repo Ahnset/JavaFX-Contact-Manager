@@ -18,6 +18,10 @@
                 <ContextMenu>
                     <items>
                         <MenuItem fx:id="addCMI" mnemonicParsing="false" onAction="#onAdd" text="Add Contact"/>
+                        <MenuItem fx:id="editCMI" mnemonicParsing="false" onAction="#onEdit" text="Edit Contact"
+                                  visible="false"/>
+                        <MenuItem fx:id="removeCMI" mnemonicParsing="false" onAction="#onRemove" text="Remove Contact"
+                                  visible="false"/>
                     </items>
                 </ContextMenu>
             </contextMenu>
@@ -26,7 +30,7 @@
     <top>
         <AnchorPane prefHeight="50.0" prefWidth="954.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="settingsBtn" focusTraversable="false" layoutX="23.0" layoutY="13.0"
+                <Button fx:id="settingsBtn" disable="true" focusTraversable="false" layoutX="23.0" layoutY="13.0"
                         onAction="#onSettings" prefHeight="25.0" prefWidth="68.0" text="_Settings">
                     <tooltip>
                         <Tooltip text="Configure various options regarding this application."/>

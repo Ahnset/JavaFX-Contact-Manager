@@ -43,6 +43,7 @@ public class AddContactController {
 
         StringBuilder warnings = new StringBuilder();
 
+        // Validate the entered first and last names.
         if (firstNameField.getText().isEmpty() && lastNameField.getText().isEmpty()) {
             warnings.append("A firstname or lastname must be given.\n");
         } else {
@@ -60,6 +61,7 @@ public class AddContactController {
                 lastNameField.clear();
             }
         }
+        // Validate the entered phone number
         if (!phoneNumberField.getText().isEmpty() && !Validator.isValidPhoneNumber(phoneNumberField.getText())) {
             warnings.append("Phone number must be in ###-###-#### format and have no white space anywhere.\n");
             phoneNumberField.clear();

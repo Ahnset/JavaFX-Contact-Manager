@@ -42,6 +42,10 @@ public class OverviewController implements Initializable {
     @FXML
     private MenuItem addCMI;
     @FXML
+    private MenuItem editCMI;
+    @FXML
+    private MenuItem removeCMI;
+    @FXML
     private Button settingsBtn;
     @FXML
     private Button aboutBtn;
@@ -124,7 +128,8 @@ public class OverviewController implements Initializable {
     }
 
     @FXML
-    void onSettings(ActionEvent event) {}
+    void onSettings(ActionEvent event) {
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -143,9 +148,13 @@ public class OverviewController implements Initializable {
             if (contactsTable.getSelectionModel().getSelectedItem() != null) {
                 editBtn.setDisable(false);
                 removeBtn.setDisable(false);
+                editCMI.setVisible(true);
+                removeCMI.setVisible(true);
             } else {
                 editBtn.setDisable(true);
                 removeBtn.setDisable(true);
+                editCMI.setVisible(false);
+                removeCMI.setVisible(false);
             }
         });
     }
