@@ -61,7 +61,7 @@ public class AddContactController {
                 lastNameField.clear();
             }
         }
-        // Validate the entered phone number
+        // Validate the entered phone number.
         if (!phoneNumberField.getText().isEmpty() && !Validator.isValidPhoneNumber(phoneNumberField.getText())) {
             warnings.append("Phone number must be in ###-###-#### format and have no white space anywhere.\n");
             phoneNumberField.clear();

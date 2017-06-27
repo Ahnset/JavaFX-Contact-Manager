@@ -1,12 +1,14 @@
 package controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Contact;
@@ -155,6 +157,27 @@ public class OverviewController implements Initializable {
                 removeBtn.setDisable(true);
                 editCMI.setVisible(false);
                 removeCMI.setVisible(false);
+            }
+        });
+
+        contactsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2 && contactsTable.getSelectionModel().getSelectedItem() != null) {
+                    Stage editDialog = new Stage();
+                    EditContactController editContactController = new EditContactController(manager, contactsTable.getSelectionModel().getSelectedItem());
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditContact.fxml"));
+                    loader.setController(editContactController);
+                    try {
+                        editDialog.setScene(new Scene(loader.load()));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    editDialog.setTitle("Edit contact");
+                    editDialog.initOwner(mainStage);
+                    editDialog.initModality(Modality.WINDOW_MODAL);
+                    editDialog.showAndWait();
+                }
             }
         });
     }
