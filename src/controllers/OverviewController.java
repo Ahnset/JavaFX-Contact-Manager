@@ -1,18 +1,17 @@
 package controllers;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Contact;
 import models.Manager;
+import util.DialogFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +25,7 @@ public class OverviewController implements Initializable {
 
     private Stage mainStage;
     private Manager manager;
+    private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
     private TableView<Contact> contactsTable;
@@ -83,36 +83,14 @@ public class OverviewController implements Initializable {
 
     @FXML
     void onAdd(ActionEvent event) {
-        Stage addDialog = new Stage();
-        AddContactController addContactController = new AddContactController(manager);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddContact.fxml"));
-        loader.setController(addContactController);
-        try {
-            addDialog.setScene(new Scene(loader.load()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        addDialog.setTitle("Add contact");
-        addDialog.initOwner(mainStage);
-        addDialog.initModality(Modality.WINDOW_MODAL);
-        addDialog.showAndWait();
+        dialogFactory.displayAddDialog(mainStage, manager);
     }
 
     @FXML
     void onEdit(ActionEvent event) {
-        Stage editDialog = new Stage();
-        EditContactController editContactController = new EditContactController(manager, contactsTable.getSelectionModel().getSelectedItem());
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditContact.fxml"));
-        loader.setController(editContactController);
-        try {
-            editDialog.setScene(new Scene(loader.load()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        if (contactsTable.getSelectionModel().getSelectedItem() != null) {
+            dialogFactory.displayEditDialog(mainStage, manager, contactsTable.getSelectionModel().getSelectedItem());
         }
-        editDialog.setTitle("Edit contact");
-        editDialog.initOwner(mainStage);
-        editDialog.initModality(Modality.WINDOW_MODAL);
-        editDialog.showAndWait();
     }
 
     @FXML
@@ -160,24 +138,10 @@ public class OverviewController implements Initializable {
             }
         });
 
-        contactsTable.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.isPrimaryButtonDown() && event.getClickCount() == 2 && contactsTable.getSelectionModel().getSelectedItem() != null) {
-                    Stage editDialog = new Stage();
-                    EditContactController editContactController = new EditContactController(manager, contactsTable.getSelectionModel().getSelectedItem());
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditContact.fxml"));
-                    loader.setController(editContactController);
-                    try {
-                        editDialog.setScene(new Scene(loader.load()));
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                    editDialog.setTitle("Edit contact");
-                    editDialog.initOwner(mainStage);
-                    editDialog.initModality(Modality.WINDOW_MODAL);
-                    editDialog.showAndWait();
-                }
+        // Adds the ability to edit a contact by double clicking on them in the contacts table.
+        contactsTable.setOnMousePressed(event -> {
+            if (event.isPrimaryButtonDown() && event.getClickCount() == 2 && contactsTable.getSelectionModel().getSelectedItem() != null) {
+                dialogFactory.displayEditDialog(mainStage, manager, contactsTable.getSelectionModel().getSelectedItem());
             }
         });
     }

@@ -18,6 +18,7 @@ import util.Formatter;
 public class AddContactController {
 
     private Manager manager;
+    private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
     private TextField firstNameField;
@@ -67,13 +68,13 @@ public class AddContactController {
             phoneNumberField.clear();
         }
         if (warnings.length() != 0) {
-            DialogFactory.createDialog("Warning!", addBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
+            dialogFactory.displayAlertDialog("Warning!", addBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
         } else {
             Contact contact = new Contact(Formatter.formatName(firstNameField.getText()), Formatter.formatName(lastNameField.getText()), phoneNumberField.getText(),
                     addressField.getText(), dateOfBirthPicker.getValue());
 
             if (manager.contactExists(contact)) {
-                DialogFactory.createDialog("Contact already exists!", addBtn.getScene().getWindow(), null,
+                dialogFactory.displayAlertDialog("Contact already exists!", addBtn.getScene().getWindow(), null,
                         String.format("The contact %s already exists.", contact.getFullName()), Alert.AlertType.WARNING);
             } else {
                 manager.addContact(contact);

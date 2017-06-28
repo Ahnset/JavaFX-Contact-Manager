@@ -23,6 +23,7 @@ public class EditContactController implements Initializable {
 
     private Manager manager;
     private Contact contact;
+    private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
     private TextField firstNameField;
@@ -73,13 +74,13 @@ public class EditContactController implements Initializable {
             phoneNumberField.clear();
         }
         if (warnings.length() != 0) {
-            DialogFactory.createDialog("Warning!", saveBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
+            dialogFactory.displayAlertDialog("Warning!", saveBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
         } else {
             Contact tempContact = new Contact(Formatter.formatName(firstNameField.getText()), Formatter.formatName(lastNameField.getText()), phoneNumberField.getText(),
                     addressField.getText(), dateOfBirthPicker.getValue());
 
             if (manager.contactExists(tempContact)) {
-                DialogFactory.createDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
+                dialogFactory.displayAlertDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
                         String.format("A contact with the name %s already exists.", tempContact.getFullName()), Alert.AlertType.WARNING);
             } else {
                 contact.setFirstName(Formatter.formatName(firstNameField.getText()));
