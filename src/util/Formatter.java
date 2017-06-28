@@ -14,7 +14,10 @@ public class Formatter {
      * @return A string
      */
     public static String formatName(String name) {
-        name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase().trim();
-        return name;
+        if (!name.isEmpty()) {
+            name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase().trim();
+            return name;
+        }
+        return null;
     }
 }
