@@ -1,5 +1,6 @@
 package util;
 
+import controllers.AboutController;
 import controllers.AddContactController;
 import controllers.EditContactController;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import java.awt.*;
 import java.io.IOException;
 
 /**
- * A collection of static methods that facilitate the easy construction of JavaFX dialogs with variable content.
+ * A collection of methods that facilitate the easy construction of JavaFX dialogs with variable content.
  *
  * @author Jared
  */
@@ -40,6 +41,28 @@ public class DialogFactory {
             Toolkit.getDefaultToolkit().beep();
         }
         dialog.showAndWait();
+    }
+
+    /**
+     * Display a dialog containing info about the application.
+     *
+     * @param parentWin The parent window of the dialog
+     */
+    public void displayAboutDialog(Stage parentWin) {
+        Stage aboutDialog = new Stage();
+        AboutController aboutController = new AboutController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/About.fxml"));
+        loader.setController(aboutController);
+        try {
+            aboutDialog.setScene(new Scene(loader.load()));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        aboutDialog.setTitle("Application Info");
+        aboutDialog.initOwner(parentWin);
+        aboutDialog.initModality(Modality.WINDOW_MODAL);
+        aboutDialog.setResizable(false);
+        aboutDialog.showAndWait();
     }
 
     /**

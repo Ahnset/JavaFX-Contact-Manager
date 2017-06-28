@@ -2,9 +2,7 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
@@ -13,7 +11,6 @@ import models.Contact;
 import models.Manager;
 import util.DialogFactory;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -65,20 +62,7 @@ public class OverviewController implements Initializable {
 
     @FXML
     void onAbout(ActionEvent event) {
-        Stage aboutDialog = new Stage();
-        AboutController aboutController = new AboutController();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/About.fxml"));
-        loader.setController(aboutController);
-        try {
-            aboutDialog.setScene(new Scene(loader.load()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        aboutDialog.setTitle("Application Info");
-        aboutDialog.initOwner(mainStage);
-        aboutDialog.initModality(Modality.WINDOW_MODAL);
-        aboutDialog.setResizable(false);
-        aboutDialog.showAndWait();
+        dialogFactory.displayAboutDialog(mainStage);
     }
 
     @FXML
