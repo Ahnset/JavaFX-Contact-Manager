@@ -6,6 +6,7 @@ import controllers.EditContactController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -31,13 +32,13 @@ public class DialogFactory {
      * @param bodyText   The body text of the dialog
      * @param type       The type of dialog to be shown
      */
-    public void displayAlertDialog(String title, Window parentWin, String headerText, String bodyText, Alert.AlertType type) {
+    public void displayAlertDialog(String title, Window parentWin, String headerText, String bodyText, AlertType type) {
         Alert dialog = new Alert(type, bodyText);
         dialog.setTitle(title);
         dialog.setHeaderText(headerText);
         dialog.initModality(Modality.WINDOW_MODAL);
         dialog.initOwner(parentWin);
-        if (type.equals(Alert.AlertType.ERROR) || type.equals(Alert.AlertType.WARNING)) {
+        if (type.equals(AlertType.ERROR) || type.equals(AlertType.WARNING)) {
             Toolkit.getDefaultToolkit().beep();
         }
         dialog.showAndWait();

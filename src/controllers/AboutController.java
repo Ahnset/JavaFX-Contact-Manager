@@ -10,7 +10,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
- * Created by Jared on 3/16/2017.
+ * A controller object that handles the interaction within the About Dialog.
+ *
+ * @author Jared
  */
 public class AboutController {
 

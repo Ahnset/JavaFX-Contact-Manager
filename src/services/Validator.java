@@ -1,7 +1,7 @@
 package services;
 
 /**
- * A collection of static methods that validate passed in data based on a set of rules.
+ * A collection of methods that validate passed in data based on a set of rules.
  *
  * @author Jared
  */
@@ -13,7 +13,7 @@ public class Validator {
      * @param name The name to be checked
      * @return True or false based on whether or not the string given represents a valid name.
      */
-    public static boolean isValidName(String name) {
+    public boolean isValidName(String name) {
         return name.matches("[a-zA-Z ]*");
     }
 
@@ -23,7 +23,7 @@ public class Validator {
      * @param phoneNumber The phone number to be checked.
      * @return True or false based on whether or not it is a valid phone number.
      */
-    public static boolean isValidPhoneNumber(String phoneNumber) {
+    public boolean isValidPhoneNumber(String phoneNumber) {
         return phoneNumber.matches("\\d{3}[-.\\s]\\d{3}[-.\\s]\\d{4}");
     }
 }

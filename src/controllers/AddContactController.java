@@ -13,11 +13,15 @@ import util.DialogFactory;
 import util.Formatter;
 
 /**
- * Created by Jared on 3/15/2017.
+ * A controller object that handles the interaction within the AddContact Dialog and its corresponding contact object.
+ *
+ * @author Jared
  */
 public class AddContactController {
 
     private Manager manager;
+    private Validator validator = new Validator();
+    private Formatter formatter = new Formatter();
     private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
@@ -53,24 +57,24 @@ public class AddContactController {
                 firstNameField.clear();
                 lastNameField.clear();
             }
-            if (!firstNameField.getText().isEmpty() && !Validator.isValidName(firstNameField.getText())) {
+            if (!firstNameField.getText().isEmpty() && !validator.isValidName(firstNameField.getText())) {
                 warnings.append("Firstname can only contain letters.\n");
                 firstNameField.clear();
             }
-            if (!lastNameField.getText().isEmpty() && !Validator.isValidName(lastNameField.getText())) {
+            if (!lastNameField.getText().isEmpty() && !validator.isValidName(lastNameField.getText())) {
                 warnings.append("Lastname can only contain letters.\n");
                 lastNameField.clear();
             }
         }
         // Validate the entered phone number.
-        if (!phoneNumberField.getText().isEmpty() && !Validator.isValidPhoneNumber(phoneNumberField.getText())) {
+        if (!phoneNumberField.getText().isEmpty() && !validator.isValidPhoneNumber(phoneNumberField.getText())) {
             warnings.append("Phone number must be in ###-###-#### format and have no white space anywhere.\n");
             phoneNumberField.clear();
         }
         if (warnings.length() != 0) {
             dialogFactory.displayAlertDialog("Warning!", addBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
         } else {
-            Contact contact = new Contact(Formatter.formatName(firstNameField.getText()), Formatter.formatName(lastNameField.getText()), phoneNumberField.getText(),
+            Contact contact = new Contact(formatter.formatName(firstNameField.getText()), formatter.formatName(lastNameField.getText()), phoneNumberField.getText(),
                     addressField.getText(), dateOfBirthPicker.getValue());
 
             if (manager.contactExists(contact)) {

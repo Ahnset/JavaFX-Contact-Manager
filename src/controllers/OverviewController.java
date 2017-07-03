@@ -16,7 +16,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * Created by Jared on 3/15/2017.
+ * A controller object that handles the interaction within the overview window of the application.
+ *
+ * @author Jared
  */
 public class OverviewController implements Initializable {
 
