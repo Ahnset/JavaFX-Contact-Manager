@@ -10,7 +10,7 @@ import models.Contact;
 import models.Manager;
 import services.Validator;
 import util.DialogFactory;
-import util.Formatter;
+import util.StringUtil;
 
 /**
  * A controller object that handles the interaction within the AddContact Dialog and its corresponding contact object.
@@ -21,7 +21,7 @@ public class AddContactController {
 
     private Manager manager;
     private Validator validator = new Validator();
-    private Formatter formatter = new Formatter();
+    private StringUtil stringUtil = new StringUtil();
     private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
@@ -74,7 +74,7 @@ public class AddContactController {
         if (warnings.length() != 0) {
             dialogFactory.displayAlertDialog("Warning!", addBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
         } else {
-            Contact contact = new Contact(formatter.formatName(firstNameField.getText()), formatter.formatName(lastNameField.getText()), phoneNumberField.getText(),
+            Contact contact = new Contact(stringUtil.formatName(firstNameField.getText()), stringUtil.formatName(lastNameField.getText()), phoneNumberField.getText(),
                     addressField.getText(), dateOfBirthPicker.getValue());
 
             if (manager.contactExists(contact)) {

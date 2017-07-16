@@ -1,11 +1,11 @@
 package util;
 
 /**
- * A collection of various methods that perform formatting on various types of data such as the names of people.
+ * A collection of various methods that perform useful operations on strings such as formatting.
  *
  * @author Jared
  */
-public class Formatter {
+public class StringUtil {
 
     /**
      * A method that formats a string based on common formatting conventions regarding a persons first or last name.

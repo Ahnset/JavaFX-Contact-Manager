@@ -11,7 +11,7 @@ import models.Contact;
 import models.Manager;
 import services.Validator;
 import util.DialogFactory;
-import util.Formatter;
+import util.StringUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +26,7 @@ public class EditContactController implements Initializable {
     private Manager manager;
     private Contact contact;
     private Validator validator = new Validator();
-    private Formatter formatter = new Formatter();
+    private StringUtil stringUtil = new StringUtil();
     private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
@@ -80,15 +80,15 @@ public class EditContactController implements Initializable {
         if (warnings.length() != 0) {
             dialogFactory.displayAlertDialog("Warning!", saveBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
         } else {
-            Contact tempContact = new Contact(formatter.formatName(firstNameField.getText()), formatter.formatName(lastNameField.getText()), phoneNumberField.getText(),
+            Contact tempContact = new Contact(stringUtil.formatName(firstNameField.getText()), stringUtil.formatName(lastNameField.getText()), phoneNumberField.getText(),
                     addressField.getText(), dateOfBirthPicker.getValue());
 
             if (manager.contactExists(tempContact)) {
                 dialogFactory.displayAlertDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
                         String.format("A contact with the name %s already exists.", tempContact.getFullName()), Alert.AlertType.WARNING);
             } else {
-                contact.setFirstName(formatter.formatName(firstNameField.getText()));
-                contact.setLastName(formatter.formatName(lastNameField.getText()));
+                contact.setFirstName(stringUtil.formatName(firstNameField.getText()));
+                contact.setLastName(stringUtil.formatName(lastNameField.getText()));
                 contact.setPhoneNumber(phoneNumberField.getText());
                 contact.setAddress(addressField.getText());
                 contact.setDateOfBirth(dateOfBirthPicker.getValue());
