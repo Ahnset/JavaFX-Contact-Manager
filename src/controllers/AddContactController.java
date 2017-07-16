@@ -50,10 +50,10 @@ public class AddContactController {
 
         // Validate the entered first and last names.
         if (firstNameField.getText().isEmpty() && lastNameField.getText().isEmpty()) {
-            warnings.append("A firstname or lastname must be given.\n");
+            warnings.append("A first or last name must be given.\n");
         } else {
             if (!firstNameField.getText().isEmpty() && !lastNameField.getText().isEmpty() && firstNameField.getText().equals(lastNameField.getText())) {
-                warnings.append("Firstname and lastname cannot be identical.\n");
+                warnings.append("The first and last name cannot be identical.\n");
                 firstNameField.clear();
                 lastNameField.clear();
             }
@@ -68,7 +68,7 @@ public class AddContactController {
         }
         // Validate the entered phone number.
         if (!phoneNumberField.getText().isEmpty() && !validator.isValidPhoneNumber(phoneNumberField.getText())) {
-            warnings.append("Phone number must be in ###-###-#### format and have no white space anywhere.\n");
+            warnings.append("The phone number must be in ###-###-#### format and have no white space anywhere.\n");
             phoneNumberField.clear();
         }
         if (warnings.length() != 0) {

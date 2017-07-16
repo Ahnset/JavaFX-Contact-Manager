@@ -23,6 +23,8 @@ import java.io.IOException;
  */
 public class DialogFactory {
 
+    //TODO: Find a way to consolidate creation of FXML windows into one method that works.
+
     /**
      * Creates an alert dialog in which receives varies attributes based on passed in parameters.
      *
@@ -38,9 +40,7 @@ public class DialogFactory {
         dialog.setHeaderText(headerText);
         dialog.initModality(Modality.WINDOW_MODAL);
         dialog.initOwner(parentWin);
-        if (type.equals(AlertType.ERROR) || type.equals(AlertType.WARNING)) {
-            Toolkit.getDefaultToolkit().beep();
-        }
+        Toolkit.getDefaultToolkit().beep();
         dialog.showAndWait();
     }
 

@@ -58,7 +58,7 @@ public class Manager {
      */
     public boolean contactExists(Contact contact) {
         for (Contact c : contacts) {
-            if (contact.getFullName().equals(c.getFullName())) {
+            if (contact.getFullName().equalsIgnoreCase(c.getFullName())) {
                 return true;
             }
         }

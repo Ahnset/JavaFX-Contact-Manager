@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,6 +13,7 @@ import models.Contact;
 import models.Manager;
 import util.DialogFactory;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -87,6 +90,7 @@ public class OverviewController implements Initializable {
         alert.setHeaderText(null);
         alert.initModality(Modality.WINDOW_MODAL);
         alert.initOwner(mainStage);
+        Toolkit.getDefaultToolkit().beep();
         Optional<ButtonType> choice = alert.showAndWait();
         if (choice.get() == ButtonType.YES) {
             manager.removeContact(contactsTable.getSelectionModel().getSelectedIndex());
