@@ -110,6 +110,7 @@ public class OverviewController implements Initializable {
         ageCol.setCellValueFactory(new PropertyValueFactory<Contact, Integer>("age"));
         dateOfBirthCol.setCellValueFactory(new PropertyValueFactory<Contact, Object>("dateOfBirth"));
         contactsTable.setItems(manager.getContacts());
+        contactsTable.getColumns().forEach(contactTableColumn -> contactTableColumn.setStyle("-fx-alignment: CENTER;"));
         createListeners();
     }
 

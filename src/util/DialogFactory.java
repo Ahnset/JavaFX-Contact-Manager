@@ -34,7 +34,7 @@ public class DialogFactory {
      * @param bodyText   The body text of the dialog
      * @param type       The type of dialog to be shown
      */
-    public void displayAlertDialog(String title, Window parentWin, String headerText, String bodyText, AlertType type) {
+    public static void displayAlertDialog(String title, Window parentWin, String headerText, String bodyText, AlertType type) {
         Alert dialog = new Alert(type, bodyText);
         dialog.setTitle(title);
         dialog.setHeaderText(headerText);
@@ -56,8 +56,8 @@ public class DialogFactory {
         loader.setController(aboutController);
         try {
             aboutDialog.setScene(new Scene(loader.load()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         aboutDialog.setTitle("Application Info");
         aboutDialog.initOwner(parentWin);
@@ -79,8 +79,8 @@ public class DialogFactory {
         loader.setController(addContactController);
         try {
             addDialog.setScene(new Scene(loader.load()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         addDialog.setTitle("Add contact");
         addDialog.initOwner(parentWin);
@@ -102,8 +102,8 @@ public class DialogFactory {
         loader.setController(editContactController);
         try {
             editDialog.setScene(new Scene(loader.load()));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         editDialog.setTitle("Edit contact");
         editDialog.initOwner(parentWin);

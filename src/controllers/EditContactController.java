@@ -25,9 +25,6 @@ public class EditContactController implements Initializable {
 
     private Manager manager;
     private Contact contact;
-    private Validator validator = new Validator();
-    private StringUtil stringUtil = new StringUtil();
-    private DialogFactory dialogFactory = new DialogFactory();
 
     @FXML
     private TextField firstNameField;
@@ -63,32 +60,32 @@ public class EditContactController implements Initializable {
                 firstNameField.clear();
                 lastNameField.clear();
             }
-            if (!firstNameField.getText().isEmpty() && !validator.isValidName(firstNameField.getText())) {
+            if (!firstNameField.getText().isEmpty() && !Validator.isValidName(firstNameField.getText())) {
                 warnings.append("Firstname can only contain letters.\n");
                 firstNameField.clear();
             }
-            if (!lastNameField.getText().isEmpty() && !validator.isValidName(lastNameField.getText())) {
+            if (!lastNameField.getText().isEmpty() && !Validator.isValidName(lastNameField.getText())) {
                 warnings.append("Lastname can only contain letters.\n");
                 lastNameField.clear();
             }
         }
         // Validate the entered phone number.
-        if (!phoneNumberField.getText().isEmpty() && !validator.isValidPhoneNumber(phoneNumberField.getText())) {
+        if (!phoneNumberField.getText().isEmpty() && !Validator.isValidPhoneNumber(phoneNumberField.getText())) {
             warnings.append("The phone number must be in ###-###-#### format and have no white space anywhere.\n");
             phoneNumberField.clear();
         }
         if (warnings.length() != 0) {
-            dialogFactory.displayAlertDialog("Warning!", saveBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
+            DialogFactory.displayAlertDialog("Warning!", saveBtn.getScene().getWindow(), null, warnings.toString(), Alert.AlertType.WARNING);
         } else {
-            Contact tempContact = new Contact(stringUtil.formatName(firstNameField.getText()), stringUtil.formatName(lastNameField.getText()), phoneNumberField.getText(),
+            Contact tempContact = new Contact(StringUtil.formatName(firstNameField.getText()), StringUtil.formatName(lastNameField.getText()), phoneNumberField.getText(),
                     addressField.getText(), dateOfBirthPicker.getValue());
 
             if (manager.contactExists(tempContact)) {
-                dialogFactory.displayAlertDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
+                DialogFactory.displayAlertDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
                         String.format("A contact with the name %s already exists.", contact.getFullName()), Alert.AlertType.WARNING);
             } else {
-                contact.setFirstName(stringUtil.formatName(firstNameField.getText()));
-                contact.setLastName(stringUtil.formatName(lastNameField.getText()));
+                contact.setFirstName(StringUtil.formatName(firstNameField.getText()));
+                contact.setLastName(StringUtil.formatName(lastNameField.getText()));
                 contact.setPhoneNumber(phoneNumberField.getText());
                 contact.setAddress(addressField.getText());
                 contact.setDateOfBirth(dateOfBirthPicker.getValue());

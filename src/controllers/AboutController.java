@@ -25,10 +25,8 @@ public class AboutController {
     void onVisit(ActionEvent event) {
         try {
             Desktop.getDesktop().browse(new URL("https://github.com/MaliceGFS/Advanced-Contact-Manager").toURI());
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
         }
     }
 
