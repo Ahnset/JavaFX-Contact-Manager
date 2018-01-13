@@ -7,7 +7,7 @@ public final class StageHolder {
     private static Stage stage;
 
     private StageHolder() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Class is not instantiatable");
     }
 
     public static Stage getStage() {
