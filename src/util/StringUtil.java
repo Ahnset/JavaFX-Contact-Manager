@@ -11,7 +11,7 @@ public class StringUtil {
      * A method that formats a string based on common formatting conventions regarding a persons first or last name.
      *
      * @param name The name to be formatted
-     * @return A string or null if the given string is empty
+     * @return A formatted string or an empty one if the given string is empty
      */
     public static String formatName(String name) {
         if (!name.isEmpty()) {

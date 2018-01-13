@@ -19,7 +19,7 @@ import util.StringUtil;
  */
 public class AddContactController {
 
-    private Manager manager;
+    private final Manager manager;
 
     @FXML
     private TextField firstNameField;

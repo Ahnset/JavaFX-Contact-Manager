@@ -2,7 +2,6 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -13,18 +12,15 @@ import services.Validator;
 import util.DialogFactory;
 import util.StringUtil;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 /**
  * A controller object that handles the interaction within the EditContact Dialog and its corresponding contact object.
  *
  * @author Jared
  */
-public class EditContactController implements Initializable {
+public class EditContactController {
 
-    private Manager manager;
-    private Contact contact;
+    private final Manager manager;
+    private final Contact contact;
 
     @FXML
     private TextField firstNameField;
@@ -99,8 +95,8 @@ public class EditContactController implements Initializable {
         cancelBtn.getScene().getWindow().hide();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    public void initialize() {
         firstNameField.setText(contact.getFirstName());
         lastNameField.setText(contact.getLastName());
         phoneNumberField.setText(contact.getPhoneNumber());

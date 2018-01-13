@@ -2,7 +2,6 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -12,22 +11,21 @@ import javafx.stage.Stage;
 import models.Contact;
 import models.Manager;
 import util.DialogFactory;
+import util.StageHolder;
 
 import java.awt.*;
-import java.net.URL;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 /**
  * A controller object that handles the interaction within the overview window of the application.
  *
  * @author Jared
  */
-public class OverviewController implements Initializable {
+public class OverviewController {
 
-    private Stage mainStage;
-    private Manager manager;
-    private DialogFactory dialogFactory = new DialogFactory();
+    private final Stage mainStage = StageHolder.getStage();
+    private final DialogFactory dialogFactory = new DialogFactory();
+    private final Manager manager;
 
     @FXML
     private TableView<Contact> contactsTable;
@@ -60,8 +58,7 @@ public class OverviewController implements Initializable {
     @FXML
     private Button removeBtn;
 
-    public OverviewController(Stage mainStage, Manager manager) {
-        this.mainStage = mainStage;
+    public OverviewController(Manager manager) {
         this.manager = manager;
     }
 
@@ -101,8 +98,7 @@ public class OverviewController implements Initializable {
     void onSettings(ActionEvent event) {
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize() {
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("lastName"));
         phoneNumberCol.setCellValueFactory(new PropertyValueFactory<Contact, String>("phoneNumber"));
