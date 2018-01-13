@@ -12,7 +12,7 @@ public final class StageHolder {
 
     public static Stage getStage() {
         if (stage == null) {
-            throw new NullPointerException("A stage has not been set.");
+            throw new NullPointerException("A stage has not been set");
         }
         return stage;
     }
