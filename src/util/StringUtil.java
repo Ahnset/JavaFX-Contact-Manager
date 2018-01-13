@@ -7,6 +7,10 @@ package util;
  */
 public class StringUtil {
 
+    private StringUtil() {
+        throw new UnsupportedOperationException("Class is not instantiatable");
+    }
+
     /**
      * A method that formats a string based on common formatting conventions regarding a persons first or last name.
      *

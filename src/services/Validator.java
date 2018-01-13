@@ -7,6 +7,10 @@ package services;
  */
 public class Validator {
 
+    private Validator() {
+        throw new UnsupportedOperationException("Class is not instantiatable");
+    }
+
     /**
      * A method to check if a string represents a valid name for a person.
      *
