@@ -80,11 +80,11 @@ public class EditContactController {
                 DialogFactory.displayAlertDialog("Contact already exists!", saveBtn.getScene().getWindow(), null,
                         String.format("A contact with the name %s already exists.", contact.getFullName()), Alert.AlertType.WARNING);
             } else {
-                contact.setFirstName(StringUtil.formatName(firstNameField.getText()));
-                contact.setLastName(StringUtil.formatName(lastNameField.getText()));
-                contact.setPhoneNumber(phoneNumberField.getText());
-                contact.setAddress(addressField.getText());
-                contact.setDateOfBirth(dateOfBirthPicker.getValue());
+                contact.firstNameProperty().set(StringUtil.formatName(firstNameField.getText()));
+                contact.lastNameProperty().set(StringUtil.formatName(lastNameField.getText()));
+                contact.phoneNumberProperty().set(phoneNumberField.getText());
+                contact.addressProperty().set(addressField.getText());
+                contact.dateOfBirthProperty().set(dateOfBirthPicker.getValue());
                 saveBtn.getScene().getWindow().hide();
             }
         }
@@ -97,10 +97,10 @@ public class EditContactController {
 
 
     public void initialize() {
-        firstNameField.setText(contact.getFirstName());
-        lastNameField.setText(contact.getLastName());
-        phoneNumberField.setText(contact.getPhoneNumber());
-        addressField.setText(contact.getAddress());
-        dateOfBirthPicker.setValue(contact.getDateOfBirth());
+        firstNameField.setText(contact.firstNameProperty().get());
+        lastNameField.setText(contact.lastNameProperty().get());
+        phoneNumberField.setText(contact.phoneNumberProperty().get());
+        addressField.setText(contact.addressProperty().get());
+        dateOfBirthPicker.setValue(contact.dateOfBirthProperty().get());
     }
 }

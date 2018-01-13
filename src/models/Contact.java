@@ -34,60 +34,20 @@ public class Contact {
         this.dateOfBirth = new SimpleObjectProperty<>(dateOfBirth);
     }
 
-    public String getFirstName() {
-        return firstName.get();
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName.set(firstName);
-    }
-
     public SimpleStringProperty firstNameProperty() {
         return firstName;
-    }
-
-    public String getLastName() {
-        return lastName.get();
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName.set(lastName);
     }
 
     public SimpleStringProperty lastNameProperty() {
         return lastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber.get();
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber.set(phoneNumber);
-    }
-
     public SimpleStringProperty phoneNumberProperty() {
         return phoneNumber;
     }
 
-    public String getAddress() {
-        return address.get();
-    }
-
-    public void setAddress(String address) {
-        this.address.set(address);
-    }
-
     public SimpleStringProperty addressProperty() {
         return address;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth.get();
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth.set(dateOfBirth);
     }
 
     public SimpleObjectProperty<LocalDate> dateOfBirthProperty() {
