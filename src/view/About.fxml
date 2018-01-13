@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="359.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/8.0.111">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0"
+            prefWidth="434.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Button fx:id="closeBtn" focusTraversable="false" layoutX="172.0" layoutY="273.0" mnemonicParsing="false"
                 onAction="#onClose" prefHeight="51.0" prefWidth="90.0" text="Close">
@@ -19,10 +18,8 @@
             </tooltip>
         </Button>
         <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="56.0" layoutY="51.0"
-                   prefHeight="25.0" prefWidth="350.0" text="A contact manager application written in JavaFX."/>
-        <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="56.0" layoutY="90.0"
-                   prefHeight="25.0" prefWidth="350.0" text="Version 1.0"/>
-        <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="56.0" layoutY="127.0"
-                   prefHeight="25.0" prefWidth="350.0" text="Created by Jared Lung"/>
+                   prefHeight="41.0" prefWidth="350.0" text="A basic contact manager application written in JavaFX."/>
+        <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="56.0" layoutY="111.0"
+                   prefHeight="41.0" prefWidth="350.0" text="Created by Jared Lung"/>
     </children>
 </AnchorPane>

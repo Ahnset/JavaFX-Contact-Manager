@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="711.0" prefWidth="954.0" xmlns="http://javafx.com/javafx/8.0.111">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="711.0"
+            prefWidth="954.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <TableView fx:id="contactsTable" prefHeight="584.0" prefWidth="954.0" BorderPane.alignment="CENTER">
             <columns>
@@ -34,13 +33,7 @@
     <top>
         <AnchorPane prefHeight="50.0" prefWidth="954.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="settingsBtn" disable="true" focusTraversable="false" layoutX="23.0" layoutY="13.0"
-                        onAction="#onSettings" prefHeight="25.0" prefWidth="68.0" text="_Settings">
-                    <tooltip>
-                        <Tooltip text="Configure various options regarding this application."/>
-                    </tooltip>
-                </Button>
-                <Button fx:id="aboutBtn" focusTraversable="false" layoutX="114.0" layoutY="13.0" onAction="#onAbout"
+                <Button fx:id="aboutBtn" focusTraversable="false" layoutX="38.0" layoutY="13.0" onAction="#onAbout"
                         prefHeight="25.0" prefWidth="68.0" text="_About">
                     <tooltip>
                         <Tooltip text="Show info about this application."/>

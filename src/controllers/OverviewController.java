@@ -48,8 +48,6 @@ public class OverviewController {
     @FXML
     private MenuItem removeCMI;
     @FXML
-    private Button settingsBtn;
-    @FXML
     private Button aboutBtn;
     @FXML
     private Button editBtn;
@@ -92,10 +90,6 @@ public class OverviewController {
         if (choice.get() == ButtonType.YES) {
             manager.removeContact(contactsTable.getSelectionModel().getSelectedIndex());
         }
-    }
-
-    @FXML
-    void onSettings(ActionEvent event) {
     }
 
     public void initialize() {

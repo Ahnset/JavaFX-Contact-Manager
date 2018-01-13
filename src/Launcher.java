@@ -22,7 +22,7 @@ public class Launcher extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Overview.fxml"));
         loader.setController(overviewController);
         mainStage.setScene(new Scene(loader.load()));
-        mainStage.setTitle(String.format("%s's contacts", System.getProperty("user.name")));
+        mainStage.setTitle(String.format("JavaFX Contact Manager - %s's contacts", System.getProperty("user.name")));
         mainStage.setResizable(false);
         mainStage.show();
     }
